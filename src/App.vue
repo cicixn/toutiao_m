@@ -1,9 +1,13 @@
 <template>
-  <div>黑马头条</div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  created() {}
+}
 </script>
 
-<style></style>
+<style scoped lang="less"></style>

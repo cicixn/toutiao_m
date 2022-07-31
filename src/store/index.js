@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+// import storage from '@/utils/storage'
+import { setToken, getToken } from '@/utils/auth'
 Vue.use(Vuex)
-
 export default new Vuex.Store({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+  state: {
+    tokenObj: getToken() || {}
+  },
+  // getters: {},
+  mutations: {
+    SET_TOKEN(state, payload) {
+      state.tokenObj = payload
+      setToken(payload)
+    }
+  }
+  // actions: {},
+  // modules: {}
 })
