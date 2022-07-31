@@ -1,9 +1,38 @@
 <template>
-  <div>首页</div>
+  <div>
+    <!-- 头部搜索 -->
+    <van-nav-bar class="navbar">
+      <template #title>
+        <van-button round class="search-btn" icon="search">搜索</van-button>
+      </template>
+    </van-nav-bar>
+  </div>
 </template>
 
 <script>
 export default {}
 </script>
 
-<style></style>
+<style scoped lang="less">
+.navbar {
+  background-color: #3296fa;
+  :deep(.van-nav-bar__title) {
+    max-width: unset;
+  }
+
+  :deep(.van-icon) {
+    color: #fff;
+  }
+}
+
+.search-btn {
+  width: 7.4rem;
+  height: 0.85333rem;
+  background-color: #5babfb;
+  color: #fff;
+
+  &.van-button--default {
+    border: 0.02667rem solid #5babfb;
+  }
+}
+</style>
