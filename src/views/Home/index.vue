@@ -3,7 +3,6 @@
     <!-- 头部搜索 -->
     <van-nav-bar class="navbar">
       <template #title>
-<<<<<<< HEAD
         <van-button
           round
           class="search-btn"
@@ -35,11 +34,6 @@
         @add-channel="addChannel"
       ></ChannelPopup>
     </van-popup>
-=======
-        <van-button round class="search-btn" icon="search">搜索</van-button>
-      </template>
-    </van-nav-bar>
->>>>>>> my
   </div>
 </template>
 
@@ -133,7 +127,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-<<<<<<< HEAD
 // 头部搜索
 .navbar {
   background-color: #3296fa;
@@ -141,10 +134,6 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-=======
-.navbar {
-  background-color: #3296fa;
->>>>>>> my
   :deep(.van-nav-bar__title) {
     max-width: unset;
   }
@@ -164,7 +153,6 @@ export default {
     border: 0.02667rem solid #5babfb;
   }
 }
-<<<<<<< HEAD
 
 /* tabs导航条样式 */
 :deep(.van-tabs__wrap) {
@@ -233,6 +221,4 @@ export default {
   padding-bottom: 100px;
   overflow: auto;
 }
-=======
->>>>>>> my
 </style>
