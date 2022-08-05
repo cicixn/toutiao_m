@@ -49,7 +49,7 @@ export default {
     getSearchSuggestion: debounce(async function () {
       try {
         const { data } = await getSearchSuggestionsAPI(this.keywords)
-        this.suggestions = data.data.options
+        this.suggestions = data.data.options.filter(Boolean)
       } catch (error) {
         this.$toast.fail('获取搜索建议失败')
       }
