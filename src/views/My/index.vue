@@ -4,22 +4,38 @@
     <header>
       <!-- 已登录 -->
       <div class="login" v-if="isLogin">
-        已登录
+        <!-- <div class="empty"></div> -->
         <div class="userInfo">
-          <van-image
+          <div class="infoLeft">
+            <van-image round width="56px" height="56px" :src="photo" />
+            <span class="name">{{ name }}</span>
+          </div>
+          <van-button
+            type="default"
             round
-            width="56px"
-            height="56px"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
-          />
-          <button @click="$router.push('/user')">编辑按钮</button>
+            size="mini"
+            @click="$router.push('/user')"
+            >编辑资料</van-button
+          >
         </div>
-        <van-grid>
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-        </van-grid>
+        <ul class="nav">
+          <li>
+            <span>0</span>
+            <span>头条</span>
+          </li>
+          <li>
+            <span>0</span>
+            <span>头条</span>
+          </li>
+          <li>
+            <span>0</span>
+            <span>头条</span>
+          </li>
+          <li>
+            <span>0</span>
+            <span>头条</span>
+          </li>
+        </ul>
       </div>
       <!-- 未登录 -->
       <div class="logout" v-else>
@@ -44,21 +60,49 @@
     </main>
     <!-- 底部 -->
     <footer>
-      <button v-if="isLogin" @click="logout">退出</button>
+      <div class="logoutButton" v-if="isLogin" @click="logout">退出</div>
     </footer>
   </div>
 </template>
 
 <script>
+import { getUserInfoAPI } from '@/api'
 export default {
+  data() {
+    return {
+      name: '',
+      photo: ''
+    }
+  },
   computed: {
     isLogin() {
       return !!this.$store.state.tokenObj.token
     }
   },
+  created() {
+    this.getUserInfo()
+  },
   methods: {
     logout() {
-      this.$store.commit('SET_TOKEN', {})
+      this.$dialog
+        .confirm({
+          title: '提示',
+          message: '确认退出登陆吗？'
+        })
+        .then(() => {
+          // on confirm
+          this.$store.commit('SET_TOKEN', {})
+          this.$toast.success('已退出登录')
+        })
+        .catch(() => {
+          // on cancel
+          this.$toast.fail('退出登录失败，请重试')
+        })
+    },
+    async getUserInfo() {
+      const { data } = await getUserInfoAPI()
+      this.name = data.data.name
+      this.photo = data.data.photo
     }
   }
 }
@@ -67,6 +111,7 @@ export default {
 <style scoped lang="less">
 .my-container {
   background-color: #f5f7f9;
+  height: 100vh;
 }
 
 header {
@@ -94,12 +139,48 @@ header {
   }
 
   .login {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    .userInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      margin-top: 140px;
+      // background-color: #911;
+      .infoLeft {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        .name {
+          margin-left: 30px;
+          color: #fff;
+          font-size: 15px;
+        }
+      }
+    }
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      li {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 8px;
+        font-size: 18px;
+        color: #fff;
+        span {
+          margin-bottom: 7px;
+        }
+      }
+    }
   }
 }
 
 main {
+  margin-bottom: 15px;
   .main-menu {
     display: flex;
     justify-content: space-around;
@@ -120,6 +201,17 @@ main {
       margin: 2px;
       font-size: 12px;
     }
+  }
+}
+
+footer {
+  .logoutButton {
+    height: 85px;
+    background-color: #fff;
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    line-height: 85px;
   }
 }
 </style>

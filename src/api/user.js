@@ -49,3 +49,42 @@ export const uploadAvatorAPI = (file) => {
     data: fm
   })
 }
+
+/**
+ * 编辑用户姓名
+ * @param {*} name
+ * @returns
+ */
+export const editUserNameAPI = (name) => {
+  return request({
+    url: '/v1_0/user/profile',
+    method: 'PATCH',
+    data: { name }
+  })
+}
+
+/**
+ * 编辑用户性别
+ * @param {*} gender
+ * @returns
+ */
+export const editUserGenderAPI = (gender) => {
+  return request({
+    url: '/v1_0/user/profile',
+    method: 'PATCH',
+    data: { gender }
+  })
+}
+
+/**
+ * 更新用户生日
+ * @param {*} birthday
+ * @returns
+ */
+export const editUserBirthdayAPI = (birthday) => {
+  return request({
+    url: '/v1_0/user/profile',
+    method: 'PATCH',
+    data: { birthday }
+  })
+}
