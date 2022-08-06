@@ -1,10 +1,29 @@
 <template>
-  <div>
+  <div class="my-container">
     <!-- 头部 -->
     <header>
-      <div class="login" v-if="isLogin">已登录</div>
+      <!-- 已登录 -->
+      <div class="login" v-if="isLogin">
+        已登录
+        <div class="userInfo">
+          <van-image
+            round
+            width="56px"
+            height="56px"
+            src="https://img01.yzcdn.cn/vant/cat.jpeg"
+          />
+          <button @click="$router.push('/user')">编辑按钮</button>
+        </div>
+        <van-grid>
+          <van-grid-item icon="photo-o" text="文字" />
+          <van-grid-item icon="photo-o" text="文字" />
+          <van-grid-item icon="photo-o" text="文字" />
+          <van-grid-item icon="photo-o" text="文字" />
+        </van-grid>
+      </div>
+      <!-- 未登录 -->
       <div class="logout" v-else>
-        <img src="../../assets/images/登录手机图.png" alt="" />
+        <img src="../../assets/images/mobile.png" alt="" />
         <router-link to="/login" class="goLogin">登录 / 注册</router-link>
       </div>
     </header>
@@ -20,6 +39,8 @@
           <p>历史</p>
         </li>
       </ul>
+      <van-cell title="消息通知" is-link />
+      <van-cell title="小智同学" is-link />
     </main>
     <!-- 底部 -->
     <footer>
@@ -44,6 +65,10 @@ export default {
 </script>
 
 <style scoped lang="less">
+.my-container {
+  background-color: #f5f7f9;
+}
+
 header {
   width: 100%;
   height: 400px;
@@ -67,18 +92,33 @@ header {
       font-size: 30px;
     }
   }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 main {
   .main-menu {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding: 28px 0;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-align: center;
     .toutiao-shoucang1 {
-      font-size: 30px;
+      font-size: 50px;
       color: #ef6e79;
     }
     .toutiao-lishi1 {
+      font-size: 50px;
+
       color: #ffbc62;
+    }
+    p {
+      margin: 2px;
+      font-size: 12px;
     }
   }
 }

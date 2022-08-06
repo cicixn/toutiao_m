@@ -24,3 +24,28 @@ export const getCodeAPI = (mobile) => {
     url: `/v1_0/sms/codes/${mobile}`
   })
 }
+
+/**
+ * 获取用户个人信息
+ * @returns Promise
+ */
+export const getUserInfoAPI = () => {
+  return request({
+    url: '/v1_0/user/profile'
+  })
+}
+
+/**
+ * 上传用户头像
+ * @param {*} file 图片的file对象
+ * @returns Promise
+ */
+export const uploadAvatorAPI = (file) => {
+  const fm = new FormData()
+  fm.append('photo', file)
+  return request({
+    url: '/v1_0/user/photo',
+    method: 'PATCH',
+    data: fm
+  })
+}
