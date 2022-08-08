@@ -138,9 +138,9 @@ export default {
     },
     async updateGender(value) {
       try {
-        this.userInfo.gender = value
         const gender = value === '男' ? 0 : 1
         await editUserGenderAPI(gender)
+        this.userInfo.gender = gender
         this.$toast.success('更改性别成功')
         this.isShowGender = false
       } catch (error) {
@@ -149,7 +149,6 @@ export default {
     },
     async updateBirthday() {
       const birthday = this.$formatTime(this.currentDate, 'YYYY-MM-DD')
-
       try {
         this.$toast.success('更改生日成功~')
         await editUserBirthdayAPI(birthday)

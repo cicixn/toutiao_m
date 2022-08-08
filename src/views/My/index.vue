@@ -25,15 +25,15 @@
           </li>
           <li>
             <span>0</span>
-            <span>头条</span>
+            <span>粉丝</span>
           </li>
           <li>
             <span>0</span>
-            <span>头条</span>
+            <span>关注</span>
           </li>
           <li>
             <span>0</span>
-            <span>头条</span>
+            <span>获赞</span>
           </li>
         </ul>
       </div>
@@ -189,12 +189,11 @@ main {
     background-color: #fff;
     text-align: center;
     .toutiao-shoucang1 {
-      font-size: 50px;
+      font-size: 45px;
       color: #ef6e79;
     }
     .toutiao-lishi1 {
-      font-size: 50px;
-
+      font-size: 45px;
       color: #ffbc62;
     }
     p {
